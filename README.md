@@ -1,1 +1,1 @@
-ln -s .vimrc to ~/
+ln -s .vimrc ~/.vimrc
