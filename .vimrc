@@ -4,6 +4,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'vim-perl/vim-perl'
 Plug 'vim-perl/vim-perl6'
+Plug 'jiangmiao/auto-pairs'
+Plug 'scrooloose/nerdcommenter'
+Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
@@ -77,8 +80,25 @@ set softtabstop=4   " Sets the number of columns for a TAB
 
 set expandtab       " Expand TABs to spaces
 
-"
-" Line numbers
-"
-set number
+let mapleader="," " change leader from \ to ,
 
+set number " line numbers
+
+filetype plugin on " needed for nerd commenter
+
+let g:EasyMotion_do_mapping = 0 " Disable default mappings
+
+" Jump to anywhere you want with minimal keystrokes, with just one key binding.
+" `s{char}{label}`
+"nmap s <Plug>(easymotion-overwin-f)
+" or
+" `s{char}{char}{label}`
+" Need one more keystroke, but on average, it may be more comfortable.
+nmap s <Plug>(easymotion-overwin-f2)
+
+" Turn on case insensitive feature
+let g:EasyMotion_smartcase = 1
+
+" JK motions: Line motions
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
