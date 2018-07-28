@@ -1,1 +1,2 @@
-ln -s .vimrc ~/.vimrc
+My vim files
+Just run ./install.sh
