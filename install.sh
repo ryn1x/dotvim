@@ -8,4 +8,4 @@ if [ -f ~/.vimrc ]; then
 fi
 
 cp ./.vimrc ~/
-cp ./.vim/ ~/
+cp -r ./.vim/ ~/
