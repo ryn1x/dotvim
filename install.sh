@@ -7,5 +7,5 @@ if [ -f ~/.vimrc ]; then
     mv ~/.vimrc ~/.vimrc.old
 fi
 
-cp ./.vimrc ~/
-cp -r ./.vim/ ~/
+cp .vimrc ~/
+cp -r .vim ~/
