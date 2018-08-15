@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/bin/sh -x
 if [ -d ~/.vim/ ]; then
     mv ~/.vim/ ~/.vim.old
 fi
