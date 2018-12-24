@@ -7,6 +7,7 @@ Plug 'vim-perl/vim-perl6'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-surround'
 Plug 'rust-lang/rust.vim'
 Plug 'vim-syntastic/syntastic'
 call plug#end()
