@@ -1,18 +1,34 @@
-" Specify a directory for plugins
+" Dependancies!
+" neovim 0.3.0+
+" pip3 install --user pynvim
+" pip3 install --user --upgrade pynvim
+
+" on first install
+" :PlugClean
+" :PlugInstall
+
+" - Specify a directory for plugins
 " - For Neovim: ~/.local/share/nvim/plugged
 " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugged')
-Plug 'rust-lang/rust.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'racer-rust/vim-racer'
-Plug 'majutsushi/tagbar'
-Plug 'vim-perl/vim-perl'
-Plug 'vim-perl/vim-perl6'
+call plug#begin('~/.local/share/nvim/plugged')
+" General
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-surround'
 Plug 'mattn/webapi-vim'
+Plug 'majutsushi/tagbar'
+" Rust
+Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Perl6
+Plug 'vim-perl/vim-perl'
+Plug 'vim-perl/vim-perl6'
 call plug#end()
 
 "
@@ -51,3 +67,20 @@ let g:EasyMotion_smartcase = 1
 " JK motions: Line motions
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
+
+set undofile   " Maintain undo history between sessions
+
+" Rust setup
+" Required for operations modifying multiple buffers like rename.
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+
+" deoplate
+let g:deoplete#enable_at_startup = 1
