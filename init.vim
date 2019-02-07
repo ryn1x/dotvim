@@ -1,7 +1,7 @@
 " Dependancies!
 " neovim 0.3.0+
 " pip3 install --user pynvim
-" pip3 install --user --upgrade pynvim
+" rustup component add rls rust-analysis rust-src
 
 " on first install
 " :PlugClean
